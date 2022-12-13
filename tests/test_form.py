@@ -2,11 +2,13 @@ from selene.support.shared import browser
 from selene import be, have
 import os
 
+
 current_dir = os.path.abspath(os.path.dirname(__file__))
-file_path = os.path.join(current_dir, 'photo.jpeg')
+file_path = os.path.join(current_dir, 'attachments/photo.jpeg')
+
 
 def test_filling_form():
-    browser.open('https://demoqa.com/automation-practice-form')
+    browser.open('/automation-practice-form')
     browser.element('#firstName').type('Alexander')
     browser.element('#lastName').type('Oboje')
     browser.element('#userEmail').type('obojealexander@gmail.com')
@@ -24,7 +26,6 @@ def test_filling_form():
     browser.element('#react-select-3-input').type('Haryana').press_enter()
     browser.element('#react-select-4-input').type('Panipat').press_enter()
     browser.element('#submit').press_enter()
-
     browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
     browser.element('.table').should(have.text('Alexander'
                                                and 'Oboje' and 'obojealexander@gmail.com'
